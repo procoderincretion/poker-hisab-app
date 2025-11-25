@@ -232,4 +232,611 @@
             border-radius: 12px; 
             flex: 1; 
             cursor: pointer; font-weight: 600;
-            transition: background 0.2s, transform 0.1s
+            transition: background 0.2s, transform 0.1s;
+            border: none;
+        }
+        .btn-cashout:hover { background: rgba(255, 59, 48, 0.3); }
+        .btn-cashout:active { transform: scale(0.98); }
+
+        .btn-remove { background: var(--accent-red); color: #ffffff; box-shadow: 0 2px 5px rgba(255, 59, 48, 0.3); }
+        .btn-remove:hover { background: #cc3029; }
+
+
+        .divider {
+            height: 1px; background: rgba(0, 0, 0, 0.08);
+            margin: 20px 0;
+        }
+
+        /* --- FOOTER & ACTIONS --- */
+        .footer-actions { 
+            text-align: center; 
+            margin-top: 40px; 
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        /* Refined primary button */
+        .cashout-btn-final {
+            background: var(--accent-aqua); 
+            color: #ffffff; 
+            padding: 15px 40px; 
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 12px; 
+            cursor: pointer;
+            font-weight: 700;
+            box-shadow: 0 6px 10px rgba(0, 122, 255, 0.3);
+            transition: background 0.2s, transform 0.1s;
+        }
+        .cashout-btn-final:hover { background: #0060c0; }
+        .cashout-btn-final:active { transform: scale(0.98); }
+
+        /* Refined add player button */
+        .btn-add-player {
+            background: var(--accent-green);
+            color: #ffffff;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            box-shadow: 0 6px 10px rgba(52, 199, 89, 0.3);
+            transition: background 0.2s, transform 0.1s;
+        }
+        .btn-add-player:hover { background: #2f944d; }
+        .btn-add-player:active { transform: scale(0.98); }
+
+        /* Refined reset button */
+        .btn-reset {
+            background: var(--text-secondary);
+            color: #ffffff;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+            transition: background 0.2s, transform 0.1s;
+        }
+        .btn-reset:hover { background: #5a5a5a; }
+        .btn-reset:active { transform: scale(0.98); }
+        
+        /* --- SETTLEMENT RESULTS STYLING --- */
+        .settlement-container {
+            margin: 50px auto 0 auto;
+            max-width: 900px; 
+            padding: 30px;
+            background-color: var(--bg-light);
+            border-radius: 16px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        .settlement-title {
+            color: var(--accent-aqua);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        .settlement-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        .settlement-table th, .settlement-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            background-color: var(--bg-deep);
+        }
+        .settlement-table th {
+            background-color: var(--bg-light);
+            font-weight: 700;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            border-top: none;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        }
+        .settlement-win {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+        .settlement-loss {
+            color: var(--accent-red);
+            font-weight: 700;
+        }
+        
+        /* --- PAYMENT INSTRUCTIONS SECTION --- */
+        .payment-instructions-section {
+            text-align: left;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .payment-instructions-title {
+            color: var(--accent-aqua);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .payment-list {
+            list-style: none;
+            padding: 0;
+            font-size: 1.1rem;
+        }
+        .payment-list li {
+            background: var(--bg-deep);
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            border-left: 5px solid var(--accent-aqua);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .payment-list .payer-name {
+            font-weight: 700;
+            color: var(--accent-red);
+        }
+        .payment-list .collector-name {
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+        .payment-list .amount-to-pay {
+            font-weight: 700;
+            color: var(--accent-aqua);
+        }
+        .no-payments-needed {
+            color: var(--text-secondary);
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* --- LEDGER SPECIFIC STYLING --- */
+        .ledger-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+            background: var(--bg-deep);
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        .ledger-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        .ledger-table th, .ledger-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            background-color: var(--bg-deep);
+        }
+        .ledger-table th {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+        .ledger-buyin {
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+        .ledger-cashout {
+            color: var(--accent-red);
+            font-weight: 600;
+        }
+        .empty-ledger {
+            text-align: center;
+            color: var(--text-secondary);
+            padding: 50px 0;
+        }
+    </style>
+</head>
+<body onload="initializeApp()">
+
+    <div class="header-container">
+        <h1 class="main-title">Poker Hisab</h1>
+        <div class="total-pot-box">
+            <div class="total-pot-label">TOTAL STAKES ON TABLE</div>
+            <div class="total-pot-amount">₹<span id="total-pot-display">0</span></div>
+        </div>
+    </div>
+
+    <div class="tab-buttons">
+        <button id="cards-tab-btn" class="tab-button" onclick="showTab('cards')">💰 Player Cards</button>
+        <button id="ledger-tab-btn" class="tab-button" onclick="showTab('ledger')">📜 Transaction History</button>
+    </div>
+
+    <div id="player-cards-container">
+        <div class="poker-table-grid" id="player-grid">
+            </div>
+    </div>
+
+    <div id="ledger-tab-content" class="ledger-container" style="display:none;">
+        <div id="ledger-content">
+            </div>
+    </div>
+
+    <div id="settlement-results" class="settlement-container" style="display:none;">
+        </div>
+
+    <div class="footer-actions">
+        <button class="btn-reset" onclick="resetSession()">START NEW SESSION</button>
+        <button class="btn-add-player" onclick="addPlayer()">+ ADD NEW PLAYER</button>
+        <button class="cashout-btn-final" onclick="calculateSettlement()">END SESSION & SETTLE</button>
+    </div>
+
+    <script>
+        let totalPot = 0;
+        let players = [];
+        let playerCount = 0; 
+        let transactionLedger = []; 
+
+        function getTimestamp() {
+            // Use 12-hour format with 'hour12: true' and include AM/PM
+            const now = new Date();
+            return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+        }
+
+        function initializeApp() {
+            addPlayer();
+            showTab('cards');
+        }
+
+        // --- TAB MANAGEMENT ---
+        function showTab(tabName) {
+            document.getElementById('player-cards-container').style.display = 'none';
+            document.getElementById('ledger-tab-content').style.display = 'none';
+            document.getElementById('settlement-results').style.display = 'none';
+            
+            document.getElementById('cards-tab-btn').classList.remove('active');
+            document.getElementById('ledger-tab-btn').classList.remove('active');
+            
+            if (tabName === 'cards') {
+                document.getElementById('player-cards-container').style.display = 'block';
+                document.getElementById('cards-tab-btn').classList.add('active');
+                document.querySelector('.footer-actions').style.display = 'flex'; 
+                renderPlayers();
+            } else if (tabName === 'ledger') {
+                document.getElementById('ledger-tab-content').style.display = 'block';
+                document.getElementById('ledger-tab-btn').classList.add('active');
+                document.querySelector('.footer-actions').style.display = 'flex'; 
+                renderLedger(); 
+            } else if (tabName === 'settlement') {
+                document.getElementById('settlement-results').style.display = 'block';
+                document.querySelector('.footer-actions').style.display = 'none';
+            }
+        }
+        // --- END TAB MANAGEMENT ---
+
+
+        function renderPlayers() {
+            const grid = document.getElementById('player-grid');
+            grid.innerHTML = ''; 
+
+            players.forEach(player => {
+                const profitLoss = -player.invested; // P&L: opposite of Net Investment
+                
+                let netClass = 'net-even';
+                let netLabel = 'NET BALANCE';
+                
+                if (profitLoss > 0) {
+                    netClass = 'net-win';
+                    netLabel = 'PROFIT';
+                } else if (profitLoss < 0) {
+                    netClass = 'net-loss';
+                    netLabel = 'LOSS';
+                } 
+                
+                const displayAmount = Math.abs(profitLoss);
+                
+                const playerCard = `
+                    <div class="player-card">
+                        <button class="btn-remove-card" onclick="removePlayer(${player.id})">x</button>
+                        
+                        <input type="text" class="player-name-input" 
+                            value="${player.name}" 
+                            onchange="updateName(${player.id}, this.value)">
+
+                        <div class="net-position ${netClass}">
+                            ${netLabel}: ₹${displayAmount}
+                        </div>
+
+                        <div class="action-row">
+                             <button class="btn-buyin" onclick="updateStack(${player.id}, 200)">+ ₹200</button>
+                             <button class="btn-buyin" onclick="updateStack(${player.id}, 500)">+ ₹500</button>
+                             <button class="btn-buyin" onclick="updateStack(${player.id}, 1000)">+ ₹1000</button>
+                        </div>
+                        <div class="action-row">
+                             <button class="btn-cashout" onclick="updateStack(${player.id}, -200)">- ₹200</button>
+                             <button class="btn-cashout" onclick="updateStack(${player.id}, -500)">- ₹500</button>
+                             <button class="btn-cashout" onclick="updateStack(${player.id}, -1000)">- ₹1000</button>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="custom-row">
+                            <div class="custom-input-group">
+                                <input type="number" id="custom-amount-${player.id}" class="custom-input" placeholder="Custom ₹">
+                                <button class="btn-custom btn-add" onclick="handleCustom(${player.id}, true)">Add</button>
+                                <button class="btn-custom btn-remove" onclick="handleCustom(${player.id}, false)">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += playerCard;
+            });
+            updateTotalPot();
+        }
+
+        function renderLedger() {
+            const ledgerContent = document.getElementById('ledger-content');
+            
+            if (transactionLedger.length === 0) {
+                ledgerContent.innerHTML = '<p class="empty-ledger">No transactions recorded yet.</p>';
+                return;
+            }
+
+            let tableHTML = `
+                <table class="ledger-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Player</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            // Display transactions newest first
+            transactionLedger.slice().reverse().forEach(tx => {
+                const typeClass = tx.type === 'BUY IN' ? 'ledger-buyin' : 'ledger-cashout';
+                const currentPlayer = players.find(p => p.id === tx.playerId);
+                const displayPlayerName = currentPlayer ? currentPlayer.name : tx.playerName;
+
+                tableHTML += `
+                    <tr>
+                        <td>${tx.time}</td>
+                        <td>${displayPlayerName}</td>
+                        <td class="${typeClass}">${tx.type}</td>
+                        <td class="${typeClass}">₹${tx.amount}</td>
+                    </tr>
+                `;
+            });
+
+            tableHTML += `</tbody></table>`;
+            ledgerContent.innerHTML = tableHTML;
+        }
+        
+        function addPlayer() {
+            playerCount++;
+            const newPlayer = {
+                id: Date.now(), 
+                name: "Player " + playerCount, 
+                invested: 0
+            };
+            players.push(newPlayer);
+            renderPlayers();
+        }
+        
+        function removePlayer(playerId) {
+            const playerIndex = players.findIndex(p => p.id === playerId);
+            if (playerIndex > -1) {
+                const player = players[playerIndex];
+                
+                if (player.invested !== 0) {
+                    const confirmation = confirm(`${player.name} still has ₹${player.invested} stake on the table. Are you sure you want to remove them and deduct this from the total pot?`);
+                    if (!confirmation) return;
+                }
+                
+                totalPot -= player.invested;
+                players.splice(playerIndex, 1);
+                renderPlayers();
+            }
+        }
+
+        function updateName(id, newName) {
+            const player = players.find(p => p.id === id);
+            if(player) {
+                player.name = newName;
+                transactionLedger.forEach(tx => {
+                    if (tx.playerId === id) tx.playerName = newName;
+                });
+            }
+            renderPlayers();
+        }
+
+        function handleCustom(playerId, isAdd) {
+            const inputField = document.getElementById(`custom-amount-${playerId}`);
+            let amount = parseInt(inputField.value);
+
+            if (isNaN(amount) || amount <= 0) {
+                alert("Please enter a valid amount.");
+                return;
+            }
+            
+            if (!isAdd) {
+                amount = -amount;
+            }
+
+            updateStack(playerId, amount);
+            inputField.value = '';
+        }
+
+        function updateStack(playerId, amount) {
+            const player = players.find(p => p.id === playerId);
+            
+            if (player) {
+                player.invested += amount;
+                totalPot += amount;
+                
+                const type = amount > 0 ? 'BUY IN' : 'CASH OUT';
+                transactionLedger.push({
+                    time: getTimestamp(),
+                    playerId: playerId,
+                    playerName: player.name,
+                    type: type,
+                    amount: Math.abs(amount)
+                });
+                
+                renderPlayers(); 
+                if (document.getElementById('ledger-tab-content').style.display === 'block') {
+                    renderLedger();
+                }
+            }
+        }
+
+        // --- Settlement Payment Assignment Logic ---
+        function settlePayments(players) {
+            // 1. Separate players into Payers (Loss) and Collectors (Profit)
+            const transactions = players.map(player => ({
+                name: player.name,
+                // The amount owed/collected is the negative of the invested amount
+                balance: -player.invested 
+            })).filter(tx => tx.balance !== 0);
+
+            // Payers need to pay (balance < 0)
+            let payers = transactions.filter(tx => tx.balance < 0)
+                                     .map(tx => ({ name: tx.name, amount: Math.abs(tx.balance) }));
+            
+            // Collectors need to receive (balance > 0)
+            let collectors = transactions.filter(tx => tx.balance > 0)
+                                        .map(tx => ({ name: tx.name, amount: tx.balance }));
+            
+            let paymentInstructions = [];
+            let pIndex = 0;
+            let cIndex = 0;
+
+            // 2. Simple Two-Pointer Settlement Algorithm
+            while (pIndex < payers.length && cIndex < collectors.length) {
+                const payer = payers[pIndex];
+                const collector = collectors[cIndex];
+
+                const amountToTransfer = Math.min(payer.amount, collector.amount);
+
+                if (amountToTransfer > 0) {
+                    paymentInstructions.push({
+                        payer: payer.name,
+                        collector: collector.name,
+                        amount: amountToTransfer
+                    });
+                }
+                
+                // Adjust remaining balances
+                payer.amount -= amountToTransfer;
+                collector.amount -= amountToTransfer;
+
+                // Move pointers
+                if (payer.amount === 0) {
+                    pIndex++;
+                }
+                if (collector.amount === 0) {
+                    cIndex++;
+                }
+            }
+            
+            return paymentInstructions;
+        }
+
+        function calculateSettlement() {
+            const resultsContainer = document.getElementById('settlement-results');
+            
+            let finalTableHTML = `
+                <h2 class="settlement-title">FINAL SESSION RESULTS</h2>
+                <table class="settlement-table">
+                    <thead>
+                        <tr>
+                            <th>Player</th>
+                            <th>Net Investment</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            players.forEach(player => {
+                const finalResult = -player.invested; // P&L
+                
+                const statusClass = finalResult >= 0 ? 'settlement-win' : 'settlement-loss';
+                const statusText = finalResult >= 0 ? 'COLLECTS' : 'PAYS OUT';
+
+                finalTableHTML += `
+                    <tr>
+                        <td style="font-weight: 600;">${player.name}</td>
+                        <td>₹${player.invested}</td>
+                        <td class="${statusClass}">₹${Math.abs(finalResult)}</td>
+                        <td class="${statusClass}">${statusText}</td>
+                    </tr>
+                `;
+            });
+
+            finalTableHTML += `</tbody></table>`;
+            
+            // --- Generate Payment Instructions ---
+            const payments = settlePayments(players);
+            
+            let paymentInstructionsHTML = `<div class="payment-instructions-section">`;
+            paymentInstructionsHTML += `<h3 class="payment-instructions-title">🤝 Required Payments 🤝</h3>`;
+
+            if (payments.length > 0) {
+                paymentInstructionsHTML += `<ul class="payment-list">`;
+                payments.forEach(p => {
+                    paymentInstructionsHTML += `
+                        <li>
+                            <span class="payer-name">${p.payer}</span> 
+                            <span>must pay</span> 
+                            <span class="collector-name">${p.collector}</span> 
+                            <span class="amount-to-pay">₹${p.amount}</span>
+                        </li>
+                    `;
+                });
+                paymentInstructionsHTML += `</ul>`;
+            } else {
+                if (totalPot === 0 && players.every(p => p.invested === 0)) {
+                    paymentInstructionsHTML += '<p class="no-payments-needed">All accounts are settled. The session ended exactly even.</p>';
+                } else {
+                    paymentInstructionsHTML += '<p class="no-payments-needed">No payments required between players (perhaps only one player or perfect balance).</p>';
+                }
+            }
+            
+            paymentInstructionsHTML += `</div>`;
+            
+            resultsContainer.innerHTML = finalTableHTML + paymentInstructionsHTML;
+            
+            showTab('settlement'); 
+        }
+        
+        function resetSession() {
+            const confirmation = confirm("Are you sure you want to start a new session? This will clear all players and transaction data.");
+            if (confirmation) {
+                totalPot = 0;
+                players = [];
+                playerCount = 0;
+                transactionLedger = []; 
+                
+                showTab('cards'); 
+                addPlayer(); 
+            }
+        }
+
+        function updateTotalPot() {
+            document.getElementById('total-pot-display').innerText = totalPot;
+        }
+
+        window.onload = function() {
+            initializeApp();
+        };
+    </script>
+</body>
+</html>
