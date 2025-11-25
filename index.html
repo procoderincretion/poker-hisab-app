@@ -522,6 +522,10 @@
             }
             showTab('cards');
         }
+        
+        function updateTotalPot() {
+            document.getElementById('total-pot-display').textContent = totalPot;
+        }
 
         // --- TAB MANAGEMENT ---
         function showTab(tabName) {
@@ -743,7 +747,7 @@
             
             // Collectors need to receive (balance > 0)
             let collectors = transactions.filter(tx => tx.balance > 0)
-                                        .map(tx => ({ name: tx.name, amount: tx.balance }));
+                                         .map(tx => ({ name: tx.name, amount: tx.balance }));
             
             let paymentInstructions = [];
             let pIndex = 0;
@@ -857,16 +861,12 @@
                 playerCount = 0;
                 transactionLedger = []; 
                 
-                showTab('cards'); 
+                initializeApp(); // Re-initialize with one player and render the cards tab
             }
         }
-
-        function updateTotalPot() {
-            document.getElementById('total-pot-display').innerText = totalPot;
-        }
-
-        // Use DOMContentLoaded to ensure the script runs after the body is ready
-        document.addEventListener('DOMContentLoaded', initializeApp);
+        
+        // Initial call to set up the app on load
+        window.onload = initializeApp;
     </script>
 </body>
 </html>
