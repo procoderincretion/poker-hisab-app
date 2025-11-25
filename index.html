@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poker Tracker - Final Ledger</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght+400;600&display=swap" rel="stylesheet">
     <style>
         /* --- CLEAN WHITE STYLING --- */
         :root {
@@ -20,7 +20,7 @@
         }
 
         body {
-            margin: 0; padding: 30px;
+            margin: 0; padding: 20px; /* Reduced overall padding for mobile */
             background-color: var(--bg-deep);
             background-image: radial-gradient(circle at top, var(--bg-light) 0%, var(--bg-deep) 70%);
             font-family: 'Open Sans', sans-serif;
@@ -28,7 +28,30 @@
             min-height: 100vh;
             font-weight: 400; 
         }
-
+        
+        /* --- MOBILE OPTIMIZATION ADDITIONS --- */
+        /* Reduce padding and font sizes on very small screens */
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .main-title { font-size: 2rem; }
+            .total-pot-amount { font-size: 2.5rem; }
+            .total-pot-box { padding: 15px 30px; }
+            .tab-button { font-size: 1rem; padding: 10px 15px; }
+            .player-name-input { font-size: 1.5rem; margin-bottom: 20px; }
+            .action-row { flex-direction: column; gap: 6px; } /* Stack transaction buttons */
+            .btn-buyin, .btn-cashout { padding: 8px; }
+            .btn-custom { width: 50%; } 
+            .custom-input-group { flex-wrap: wrap; }
+            .custom-input { flex-grow: 1; min-width: 100%; margin-bottom: 8px;}
+            
+            .footer-actions { flex-direction: column; gap: 10px; } /* Stack footer buttons */
+            .cashout-btn-final, .btn-add-player, .btn-reset { width: 100%; padding: 12px; }
+            
+            .settlement-table th, .settlement-table td { padding: 10px; font-size: 0.9rem; }
+            .payment-list li { flex-direction: column; align-items: flex-start; padding: 10px; }
+            .payment-list li span { margin-top: 5px; }
+        }
+        
         h1, h2 { 
             font-family: 'Montserrat', sans-serif;
             font-weight: 700; 
@@ -37,7 +60,7 @@
         }
 
         /* --- HEADER & TOTAL POT --- */
-        .header-container { text-align: center; margin-bottom: 50px; }
+        .header-container { text-align: center; margin-bottom: 40px; }
         .main-title { 
             color: var(--text-dark); 
             font-size: 2.5rem;
@@ -83,7 +106,7 @@
             border-bottom: 3px solid var(--accent-aqua);
         }
         
-        /* --- GRID & CARD (Responsive for Mobile) --- */
+        /* --- GRID & CARD (Mobile optimization applied here) --- */
         #player-cards-container {
             max-width: 1300px;
             margin: 0 auto;
@@ -91,12 +114,21 @@
         
         .poker-table-grid {
             display: grid; 
+            /* On wide screens, use the responsive grid: */
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px; 
             padding: 30px;
             background: var(--bg-deep);
             border-radius: 0 0 16px 16px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        /* Override grid for very small mobile screens */
+        @media (max-width: 600px) {
+            .poker-table-grid {
+                grid-template-columns: 1fr; /* Force single column on mobile */
+                gap: 15px;
+                padding: 15px;
+            }
         }
 
         .player-card {
@@ -145,19 +177,19 @@
             padding: 10px;
             border-radius: 8px;
             background: var(--bg-deep);
-            border: none; /* Explicitly remove border for clean look */
+            border: none;
         }
         .net-win { 
             color: var(--accent-green); 
-            box-shadow: 0 1px 3px rgba(52, 199, 89, 0.2); /* Green shadow for win */
+            box-shadow: 0 1px 3px rgba(52, 199, 89, 0.2);
         } 
         .net-loss { 
             color: var(--accent-red); 
-            box-shadow: 0 1px 3px rgba(255, 59, 48, 0.2); /* Red shadow for loss */
+            box-shadow: 0 1px 3px rgba(255, 59, 48, 0.2);
         }
         .net-even { 
             color: var(--text-secondary); 
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); /* Neutral shadow for even */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
         }
         
         /* --- DYNAMIC BUTTONS --- */
@@ -440,7 +472,7 @@
         }
     </style>
 </head>
-<body onload="initializeApp()">
+<body>
 
     <div class="header-container">
         <h1 class="main-title">Poker Hisab</h1>
@@ -487,7 +519,10 @@
         }
 
         function initializeApp() {
-            addPlayer();
+            // Only add a player if the list is empty (prevents double-adding on reload)
+            if (players.length === 0) {
+                addPlayer();
+            }
             showTab('cards');
         }
 
@@ -826,7 +861,7 @@
                 transactionLedger = []; 
                 
                 showTab('cards'); 
-                addPlayer(); 
+                // Don't call addPlayer() here, let initializeApp handle the first player on page load
             }
         }
 
@@ -834,9 +869,8 @@
             document.getElementById('total-pot-display').innerText = totalPot;
         }
 
-        window.onload = function() {
-            initializeApp();
-        };
+        // Use DOMContentLoaded to ensure the script runs after the body is ready
+        document.addEventListener('DOMContentLoaded', initializeApp);
     </script>
 </body>
 </html>
