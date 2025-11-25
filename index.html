@@ -20,7 +20,7 @@
         }
 
         body {
-            margin: 0; padding: 20px; /* Reduced overall padding for mobile */
+            margin: 0; padding: 20px;
             background-color: var(--bg-deep);
             background-image: radial-gradient(circle at top, var(--bg-light) 0%, var(--bg-deep) 70%);
             font-family: 'Open Sans', sans-serif;
@@ -50,6 +50,12 @@
             .settlement-table th, .settlement-table td { padding: 10px; font-size: 0.9rem; }
             .payment-list li { flex-direction: column; align-items: flex-start; padding: 10px; }
             .payment-list li span { margin-top: 5px; }
+            
+            .poker-table-grid {
+                grid-template-columns: 1fr; /* Force single column on mobile */
+                gap: 15px;
+                padding: 15px;
+            }
         }
         
         h1, h2 { 
@@ -106,7 +112,7 @@
             border-bottom: 3px solid var(--accent-aqua);
         }
         
-        /* --- GRID & CARD (Mobile optimization applied here) --- */
+        /* --- GRID & CARD --- */
         #player-cards-container {
             max-width: 1300px;
             margin: 0 auto;
@@ -114,21 +120,12 @@
         
         .poker-table-grid {
             display: grid; 
-            /* On wide screens, use the responsive grid: */
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px; 
             padding: 30px;
             background: var(--bg-deep);
             border-radius: 0 0 16px 16px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        }
-        /* Override grid for very small mobile screens */
-        @media (max-width: 600px) {
-            .poker-table-grid {
-                grid-template-columns: 1fr; /* Force single column on mobile */
-                gap: 15px;
-                padding: 15px;
-            }
         }
 
         .player-card {
@@ -501,8 +498,8 @@
         </div>
 
     <div class="footer-actions">
-        <button class="btn-reset" onclick="resetSession()">START NEW SESSION</button>
         <button class="btn-add-player" onclick="addPlayer()">+ ADD NEW PLAYER</button>
+        <button class="btn-reset" onclick="resetSession()">START NEW SESSION</button>
         <button class="cashout-btn-final" onclick="calculateSettlement()">END SESSION & SETTLE</button>
     </div>
 
@@ -861,7 +858,6 @@
                 transactionLedger = []; 
                 
                 showTab('cards'); 
-                // Don't call addPlayer() here, let initializeApp handle the first player on page load
             }
         }
 
